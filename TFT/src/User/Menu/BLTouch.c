@@ -48,6 +48,8 @@ void menuBLTouch(void)
 
       case KEY_ICON_4:
         storeCmd("G28\n");
+        storeCmd("G0 Z10 F1000\n");
+        storeCmd("G0 X155 Y155 F3000\n");
         storeCmd("M48\n");
         break;
 
