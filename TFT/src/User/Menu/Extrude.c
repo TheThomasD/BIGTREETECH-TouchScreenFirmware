@@ -116,6 +116,7 @@ void menuExtrude(void)
 
       case KEY_ICON_7:
         cooldownTemperature();
+        mustStoreCmd("M84\n");
         CLOSE_MENU();
         eAxisBackup.handled = false;  // exiting from Extrude menu, no need for it anymore
         break;
@@ -160,6 +161,7 @@ void menuExtrude(void)
   { // restore E axis coordinate, feedrate and relativeness to pre-extrude state
     mustStoreCmd("G92 E%.5f\n", eAxisBackup.coordinate);
     mustStoreCmd("G0 F%d\n", eAxisBackup.feedrate);
+    mustStoreCmd("G84\n");
 
     if (eAxisBackup.relative == true)
       mustStoreCmd("M83\n");  // Set extruder to relative
