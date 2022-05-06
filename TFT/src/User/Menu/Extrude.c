@@ -161,7 +161,7 @@ void menuExtrude(void)
   { // restore E axis coordinate, feedrate and relativeness to pre-extrude state
     mustStoreCmd("G92 E%.5f\n", eAxisBackup.coordinate);
     mustStoreCmd("G0 F%d\n", eAxisBackup.feedrate);
-    mustStoreCmd("G84\n");
+    mustStoreCmd("M84\n");  // disable steppers
 
     if (eAxisBackup.relative == true)
       mustStoreCmd("M83\n");  // Set extruder to relative
