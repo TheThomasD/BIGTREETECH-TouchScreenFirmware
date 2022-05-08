@@ -64,11 +64,11 @@ void ablStart(void)
   switch (infoMachineSettings.leveling)
   {
     case BL_BBL:  // if Bilinear Bed Leveling
-      storeCmd("G29\n");
+      storeCmd("G29 V4\n");
       break;
 
     case BL_UBL:  // if Unified Bed Leveling
-      storeCmd("G29 P1\n");
+      storeCmd("G29 P1 V4\n");
       // Run this multiple times since it only fills some missing points, not all.
       storeCmd("G29 P3\n");
       storeCmd("G29 P3\n");
@@ -76,7 +76,7 @@ void ablStart(void)
       break;
 
     default:  // if any other Auto Bed Leveling
-      storeCmd("G29\n");
+      storeCmd("G29 V4\n");
       break;
   }
 
