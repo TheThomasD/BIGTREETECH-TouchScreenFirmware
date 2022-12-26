@@ -36,8 +36,8 @@ void probeOffsetEnable(float shim)
   mustStoreCmd("G1 X%.2f Y%.2f\n",
                getParameter(P_PROBE_OFFSET, AXIS_INDEX_X),
                getParameter(P_PROBE_OFFSET, AXIS_INDEX_Y));         // move nozzle to XY probing point
-  probeHeightStart(probedZ - probeOffsetGetValue() + shim, false);  // lower nozzle to probing Z0 point + shim
-  probeOffsetSetValue(probedZ);                                     // set Z offset to match probing Z0 point
+  probeHeightStart(2.0 + shim, false);  // lower nozzle to probing Z0 point + shim
+  probeOffsetSetValue(-probedZ + 2.0 + shim);                                     // set Z offset to match probing Z0 point
   probeHeightRelative();                                            // set relative position mode
 }
 
